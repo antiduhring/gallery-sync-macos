@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FilesProvider {
+class FilesProvider: ObservableObject {
     var urls: [URL] = []
     
     func setUrls(urls: [URL]) {

@@ -8,44 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var filesProvider:FilesProvider
     @EnvironmentObject var itemsClient:ItemsClient
     
     var body: some View {
-        ScrollView{
-            Text("Items")
-                .font(.title)
-                .bold()
-            
-            VStack(alignment: .leading) {
-                ForEach(itemsClient.items) {item in
-                    Text("\(item.id) \(item.name)")
-                }
-            }
-            
+        VStack {
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundStyle(.tint)
+            Text("GALLERY")
         }
-        .padding(.vertical)
-        .onAppear {
-            Task{
-                await itemsClient.syncItems()
-            }
-            itemsClient.loadItems()
-        }
-        Button("REFRESH") {
-            itemsClient.loadItems()
-        }.padding()
-        
+        .padding()
         Button("SYNC") {
+            let files = filesProvider.getFiles()
             Task{
-                await itemsClient.syncItems()
+                await itemsClient.syncItems(files: files)
             }
-        }.padding()
-        
-        Browser().environmentObject(itemsClient)
+        }
+        Browser(onSelect: onSelectFileUrl)
+    }
+    
+    func onSelectFileUrl(fileUrl: [URL]) {
+        filesProvider.setUrls(urls: fileUrl)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environmentObject(ItemsClient())
+        ContentView()
+            .environmentObject(ItemsClient())
+            .environmentObject(FilesProvider())
     }
 }

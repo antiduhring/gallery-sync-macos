@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct Browser: View {
-    @EnvironmentObject var itemsClient:ItemsClient
+    let onSelect: (_ fileUrl: [URL]) -> Void
     @State private var fileURL: URL?
     @State var fileName = "no file chosen"
     @State var openFile = false
@@ -30,7 +30,8 @@ struct Browser: View {
                     
                     do{
                         let fileURL = try Result.get()
-                        itemsClient.setUrls(urls: fileURL)
+                       //todo: use callback
+                        onSelect(fileURL)
                         self.fileName = fileURL.first?.lastPathComponent ?? "file not available"
                         
                     }

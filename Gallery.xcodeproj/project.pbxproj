@@ -104,6 +104,9 @@
 		CE9E43A32B2D02070035F0B4 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				CE9E43D52B2D387B0035F0B4 /* Browser.swift */,
+				CE9E43D32B2D24000035F0B4 /* FilesProvider.swift */,
+				CE9E43D12B2D08E80035F0B4 /* Item.swift */,
 				CE9E440E2B2D58620035F0B4 /* GalleryRelease.entitlements */,
 				CE9E43CF2B2D08280035F0B4 /* ItemsClient.swift */,
 				CE9E43A42B2D02070035F0B4 /* GalleryApp.swift */,
@@ -111,9 +114,6 @@
 				CE9E43A82B2D020F0035F0B4 /* Assets.xcassets */,
 				CE9E43AD2B2D020F0035F0B4 /* Gallery.entitlements */,
 				CE9E43AA2B2D020F0035F0B4 /* Preview Content */,
-				CE9E43D12B2D08E80035F0B4 /* Item.swift */,
-				CE9E43D32B2D24000035F0B4 /* FilesProvider.swift */,
-				CE9E43D52B2D387B0035F0B4 /* Browser.swift */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";

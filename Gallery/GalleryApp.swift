@@ -9,12 +9,13 @@ import SwiftUI
 
 @main
 struct GalleryApp: App {
-    var itemsClient: ItemsClient = ItemsClient()
-    
+    let filesProvider = FilesProvider()
+    let itemsClient = ItemsClient()
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(itemsClient)
+                .environmentObject(filesProvider)
+                .environmentObject(itemsClient);
         }
     }
 }
